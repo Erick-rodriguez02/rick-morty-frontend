@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0d11;
+  --foreground: #ffffff;
+  --slime-green: #97ce4c;
+  --slime-green-glow: rgba(151, 206, 76, 0.4);
+  --portal-green: #40e0d0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.portal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.15;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.portal {
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, #97ce4c 0%, #44281d 50%, #0b0d11 100%);
+  animation: swirl 20s linear infinite;
+}
+
+@keyframes swirl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.live-search-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--slime-green);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  width: 100%;
+  max-width: 600px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px var(--slime-green-glow);
+}
+
+.live-search-input:focus {
+  box-shadow: 0 0 25px var(--slime-green);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.character-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(151, 206, 76, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px var(--slime-green-glow);
+  border-color: var(--slime-green);
+}
