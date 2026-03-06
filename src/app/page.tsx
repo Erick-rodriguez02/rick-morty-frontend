@@ -32,6 +32,7 @@ export default function Home() {
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      console.log('Fetching from:', apiUrl); // Debugging for the user
       const response = await fetch(
         `${apiUrl}/characters?name=${encodeURIComponent(query)}`,
         { signal }
