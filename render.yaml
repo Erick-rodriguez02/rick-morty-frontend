@@ -7,4 +7,4 @@ services:
     startCommand: npm start
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        value: https://rick-morty-backend.onrender.com # Ajustar según URL real
+        sync: false # Configurar en el Dashboard (ej. https://rick-morty-backend.onrender.com)
