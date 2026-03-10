@@ -31,8 +31,10 @@ export default function Home() {
     const signal = controller.signal;
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-      console.log('Fetching from:', apiUrl); // Debugging for the user
+      // Usar la URL de Render directamente para evitar problemas de build
+      const apiUrl = 'https://rick-morty-backend-72dn.onrender.com';
+      
+      console.log('Conectando con la API de producción:', apiUrl);
       const response = await fetch(
         `${apiUrl}/characters?name=${encodeURIComponent(query)}`,
         { signal }
@@ -42,7 +44,7 @@ export default function Home() {
       setCharacters(data.results || []);
     } catch (err: any) {
       if (err.name === 'AbortError') return;
-      setError('No se pudieron cargar los personajes. Asegúrate de que el backend esté corriendo.');
+      setError('No se pudieron cargar los personajes. El portal dimensional parece estar cerrado.');
       console.error(err);
     } finally {
       if (!signal.aborted) {
